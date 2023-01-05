@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox fx:id="searchFieldsPane" alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" style="-fx-padding: 3em 1em; -fx-spacing: 1.5em; -fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javasuns.demo.controller.SearchFieldsController">
+   <children>
+      <TextField promptText="Normal TextField" />
+      <TextField promptText="Normal TextField" />
+      <TextField promptText="Gluon TextField" />
+      <TextField promptText="Gluon TextField" />
+   </children>
+</VBox>

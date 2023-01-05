@@ -1,0 +1,89 @@
+plugins {
+    id 'eclipse'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.14-SNAPSHOT' // Needed for JavaFX 
+    id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.17-SNAPSHOT'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://nexus.gluonhq.com/nexus/content/repositories/releases' }
+}
+
+application {
+     mainModule = 'javasuns.demo' // name defined in module-info.java
+     mainClass  = 'javasuns.demo.application.Main2'
+}
+
+group = 'javasuns.demo'
+
+// Enable Module Conventions
+java.modularity.inferModulePath = true       
+
+javafx {
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.graphics' ]
+}
+
+ext.GLUON_ATTACH_VER = "4.0.16"
+ext.TARGET = project.hasProperty('target') ? project.getProperty('target') : "Desktop"
+
+mainClassName  = 'javasuns.demo.application.Main2'
+
+gluonfx {
+
+    appIdentifier="javasuns.demo"
+
+    target="ios"      
+
+    release {
+		// iOS
+		bundleName='Demo'
+		bundleVersion='1.0.0'
+		bundleShortVersion='1.0.0'
+		providedSigningIdentity='...'
+		providedProvisioningProfile='...'
+		skipSigning=false
+		
+		
+		versionCode = "1"
+		versionName = "1.0.0"
+		providedKeyStorePath = "..."
+		providedKeyStorePassword = "..."
+		providedKeyAlias = "..."
+		providedKeyAliasPassword = "..."
+    } 
+
+	attachConfig {
+        version = "$GLUON_ATTACH_VER"
+        services 'device', 'browser','statusbar','share','push-notifications','runtime-args','lifecycle','display','store-review'
+    }
+
+    compilerArgs = [ '-Ob' ]
+
+    reflectionList = [
+    	        "javasuns.demo.controller.SearchFieldsController",
+
+		"javafx.fxml.FXMLLoader",
+		"javafx.scene.control.Button",
+		"javafx.scene.control.ComboBox",
+		"javafx.scene.control.Label",
+		"javafx.scene.control.ListView",
+		"javafx.scene.control.ProgressIndicator",
+		"javafx.scene.control.ScrollPane",		
+		"javafx.scene.control.ToggleButton",
+		"javafx.scene.paint.Color",
+		
+		"javafx.scene.layout.AnchorPane",
+		"javafx.scene.layout.ColumnConstraints",
+		"javafx.scene.layout.GridPane",
+		"javafx.scene.layout.Region",
+		"javafx.scene.layout.RowConstraints",
+		"javafx.scene.layout.StackPane",
+		"javafx.scene.layout.HBox",
+		"javafx.scene.layout.VBox",
+		"javafx.scene.control.OverrunStyle",
+		"javafx.scene.CacheHint",
+		"javafx.geometry.NodeOrientation",
+		"javafx.geometry.Point3D"
+	]
+}
