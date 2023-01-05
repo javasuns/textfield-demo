@@ -25,7 +25,6 @@ javafx {
 }
 
 ext.GLUON_ATTACH_VER = "4.0.16"
-ext.TARGET = project.hasProperty('target') ? project.getProperty('target') : "Desktop"
 
 mainClassName  = 'javasuns.demo.application.Main2'
 
